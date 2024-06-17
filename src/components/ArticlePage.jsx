@@ -4,6 +4,7 @@ import {
   getArticleById,
   getCommentsByArticleId,
   patchArticleVotes,
+  postComment,
 } from "../api";
 import CommentCard from "./CommentCard";
 import "../components-css/ArticlePage.css";
@@ -14,6 +15,10 @@ const ArticlePage = () => {
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
   const [votes, setVotes] = useState(0);
+  const [newComment, setNewComment] = useState("");
+  const [username, setUsername] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionError, setSubmissionError] = useState(null);
 
   useEffect(() => {
     getArticleById(articleId)
@@ -46,6 +51,30 @@ const ArticlePage = () => {
     });
   };
 
+  const handleCommentSubmit = (event) => {
+    event.preventDefault();
+    if (newComment.trim() === "" || username.trim() === "") {
+      setSubmissionError("Username and comment cannot be empty.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmissionError(null);
+
+    postComment(articleId, { username, body: newComment })
+      .then((comment) => {
+        setComments((prevComments) => [comment, ...prevComments]);
+        setNewComment("");
+        setUsername("");
+        setIsSubmitting(false);
+      })
+      .catch((error) => {
+        console.error("Error posting comment:", error);
+        setSubmissionError("Failed to post comment. Please try again later.");
+        setIsSubmitting(false);
+      });
+  };
+
   if (error) return <p className="error">{error}</p>;
   if (!article) return <p>Loading article...</p>;
 
@@ -65,9 +94,28 @@ const ArticlePage = () => {
       </div>
 
       <h3>Comments</h3>
+      <form onSubmit={handleCommentSubmit} className="comment-form">
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+          required
+        />
+        <textarea
+          value={newComment}
+          onChange={(e) => setNewComment(e.target.value)}
+          placeholder="Write your comment here..."
+          required
+        />
+        <button type="submit" disabled={isSubmitting}>
+          Submit Comment
+        </button>
+        {submissionError && <p className="error">{submissionError}</p>}
+      </form>
       {comments.length > 0 ? (
         comments.map((comment) => (
-          <CommentCard key={comment.created_at} comment={comment} />
+          <CommentCard key={comment.comment_id} comment={comment} />
         ))
       ) : (
         <p>No comments yet.</p>
