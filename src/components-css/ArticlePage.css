@@ -31,3 +31,29 @@
   .article-page-body {
     padding-bottom: 30px;
   }
+
+  .article-votes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .article-votes button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+  
+  .article-votes button:hover {
+    background-color: darkred;
+  }
+  
+  .article-votes span {
+    font-size: 1.2em;
+    margin: 0 10px;
+  }
