@@ -1,13 +1,20 @@
-import { useState } from "react";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
-import ArticleList from "./components/ArticleList";
 import HomePage from "./components/HomePage";
+import ArticlePage from "./components/ArticlePage";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
-      <HomePage />
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/articles/:articleId" element={<ArticlePage />} />
+      </Routes>
+      <Footer />
     </>
   );
 }
