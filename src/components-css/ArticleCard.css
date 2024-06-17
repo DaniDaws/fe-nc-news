@@ -48,3 +48,7 @@
     font-style: italic;
     font-weight: normal;
   }
+
+  .article-card:hover {
+    transform: scale(1.02);
+  }

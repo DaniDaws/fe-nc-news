@@ -7,6 +7,21 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
+  .header-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .header-link:hover .header-content {
+    color: inherit; /* Ensures the color doesn't change on hover */
+  }
+  
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
   .header-text {
     margin: 0;
     font-size: 1.2em;
