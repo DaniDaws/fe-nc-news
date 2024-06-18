@@ -2,7 +2,7 @@
 
 ---
 
-A deployed version of this app can be found at https://danielle-dawson-nc-news.netlify.app
+A deployed version of this app can be found at https://danielle-nc-news.netlify.app
 
 ---
 
