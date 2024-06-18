@@ -18,11 +18,9 @@
   background-color: var(--color-background-dark);
 }
 
-
 .vote-count {
   color: inherit;
 }
-
 
 .comment-card {
   background-color: var(--comment-card-background-light);
