@@ -35,7 +35,7 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 ## Back End Repo
 
 (GitHub) https://github.com/DaniDaws/be-nc-news <br>
-(hosted) https://be-nc-news-r6yn.onrender.com
+(hosted) https://be-nc-news-r6yn.onrender.com/api
 
 ---
 
