@@ -5,6 +5,7 @@ import {
   getCommentsByArticleId,
   patchArticleVotes,
   postComment,
+  deleteComment,
 } from "../api";
 import CommentCard from "./CommentCard";
 import CommentForm from "./CommentForm";
@@ -16,6 +17,7 @@ const ArticlePage = () => {
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
   const [votes, setVotes] = useState(0);
+  const currentUser = "grumpy19";
 
   useEffect(() => {
     getArticleById(articleId)
@@ -54,6 +56,14 @@ const ArticlePage = () => {
     });
   };
 
+  const handleDeleteComment = (commentId) => {
+    return deleteComment(commentId).then(() => {
+      setComments((prevComments) =>
+        prevComments.filter((comment) => comment.comment_id !== commentId)
+      );
+    });
+  };
+
   if (error) return <p className="error">{error}</p>;
   if (!article) return <p>Loading article...</p>;
 
@@ -73,13 +83,20 @@ const ArticlePage = () => {
       </div>
 
       <h3>Comments</h3>
+      <p className="logged-in-as">logged in as {currentUser}</p>
       <CommentForm
         articleId={articleId}
+        currentUser={currentUser}
         onCommentSubmit={handleCommentSubmit}
       />
       {comments.length > 0 ? (
         comments.map((comment) => (
-          <CommentCard key={comment.comment_id} comment={comment} />
+          <CommentCard
+            key={comment.comment_id}
+            comment={comment}
+            currentUser={currentUser}
+            onDelete={handleDeleteComment}
+          />
         ))
       ) : (
         <p>No comments yet.</p>

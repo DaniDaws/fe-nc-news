@@ -1,26 +1,24 @@
 import React, { useState } from "react";
 import "../components-css/CommentForm.css";
 
-const CommentForm = ({ articleId, onCommentSubmit }) => {
+const CommentForm = ({ articleId, currentUser, onCommentSubmit }) => {
   const [newComment, setNewComment] = useState("");
-  const [username, setUsername] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (newComment.trim() === "" || username.trim() === "") {
-      setSubmissionError("Username and comment cannot be empty.");
+    if (newComment.trim() === "") {
+      setSubmissionError("Comment cannot be empty.");
       return;
     }
 
     setIsSubmitting(true);
     setSubmissionError(null);
 
-    onCommentSubmit({ articleId, username, body: newComment })
+    onCommentSubmit({ articleId, username: currentUser, body: newComment })
       .then(() => {
         setNewComment("");
-        setUsername("");
         setIsSubmitting(false);
       })
       .catch((error) => {
@@ -32,13 +30,6 @@ const CommentForm = ({ articleId, onCommentSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className="comment-form">
-      <input
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Username"
-        required
-      />
       <textarea
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
