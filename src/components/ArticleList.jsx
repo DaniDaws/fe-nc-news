@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import "../components-css/ArticleList.css";
 
@@ -8,10 +8,9 @@ const ArticleList = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("https://be-nc-news-r6yn.onrender.com/api/articles")
-      .then(({ data }) => {
-        setArticles(data.articles);
+    getArticles()
+      .then((articles) => {
+        setArticles(articles);
       })
       .catch((error) => {
         console.error("Error fetching articles:", error);
