@@ -5,10 +5,14 @@
   border-radius: 5px;
   margin: 10px 0;
   padding: 10px;
-  background-color: #fff;
+  background-color: var(--comment-card-background-light);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 90vw;
   max-width: 1200px;
+}
+
+[data-theme="dark"] .article-card {
+  background-color: var(--comment-card-background-dark);
 }
 
 .article-card:hover {
@@ -33,12 +37,12 @@
 .article-card h2 {
   margin: 0;
   font-size: 1.5em;
-  color: #333;
+  color: inherit;
 }
 
 .article-card p {
   margin: 5px 0;
-  color: #666;
+  color: inherit;
 }
 
 .article-card .author,

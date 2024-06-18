@@ -1,16 +1,40 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --color-background-light: #ffffff;
+  --color-background-dark: #242424;
+  --color-text-light: #213547;
+  --color-text-dark: #ffffff;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --comment-card-background-light: #ffffff;
+  --comment-card-background-dark: #333333;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+[data-theme="light"] {
+  color: var(--color-text-light);
+  background-color: var(--color-background-light);
+}
+
+[data-theme="dark"] {
+  color: var(--color-text-dark);
+  background-color: var(--color-background-dark);
+}
+
+
+.vote-count {
+  color: inherit;
+}
+
+
+.comment-card {
+  background-color: var(--comment-card-background-light);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .comment-card {
+  background-color: var(--comment-card-background-dark);
 }
 
 a {
@@ -24,6 +48,7 @@ a:hover {
 
 body {
   font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 @media (max-width: 768px) {
@@ -35,21 +60,6 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
 
 .container {
