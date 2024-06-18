@@ -9,6 +9,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 90vw;
   max-width: 1200px;
+  color: var(--color-text-light); 
 }
 
 [data-theme="dark"] .article-card {
@@ -37,7 +38,10 @@
 .article-card h2 {
   margin: 0;
   font-size: 1.5em;
-  color: inherit;
+}
+
+[data-theme="dark"] .article-card  {
+  color: var(--color-text-dark); 
 }
 
 .article-card p {
