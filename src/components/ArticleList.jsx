@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import TopicDropdown from "./TopicDropdown";
@@ -6,9 +7,10 @@ import SortControls from "./SortControls";
 import "../components-css/ArticleList.css";
 
 const ArticleList = () => {
+  const { topic } = useParams();
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState(null);
-  const [selectedTopic, setSelectedTopic] = useState("");
+  const [selectedTopic, setSelectedTopic] = useState(topic || "");
   const [sortBy, setSortBy] = useState("created_at");
   const [order, setOrder] = useState("desc");
 
@@ -23,9 +25,16 @@ const ArticleList = () => {
       });
   }, [selectedTopic, sortBy, order]);
 
+  useEffect(() => {
+    setSelectedTopic(topic || "");
+  }, [topic]);
+
   return (
     <div className="article-list">
-      <TopicDropdown onSelectTopic={setSelectedTopic} />
+      <TopicDropdown
+        selectedTopic={selectedTopic}
+        onSelectTopic={setSelectedTopic}
+      />
       <SortControls
         sortBy={sortBy}
         setSortBy={setSortBy}

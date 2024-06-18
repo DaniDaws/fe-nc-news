@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { getTopics } from "../api";
 import "../components-css/TopicDropdown.css";
 
-const TopicDropdown = ({ onSelectTopic }) => {
+const TopicDropdown = ({ selectedTopic, onSelectTopic }) => {
   const [topics, setTopics] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getTopics().then((topics) => {
@@ -12,11 +14,21 @@ const TopicDropdown = ({ onSelectTopic }) => {
   }, []);
 
   const handleChange = (event) => {
-    onSelectTopic(event.target.value);
+    const topic = event.target.value;
+    onSelectTopic(topic);
+    if (topic) {
+      navigate(`/topics/${topic}`);
+    } else {
+      navigate(`/`);
+    }
   };
 
   return (
-    <select onChange={handleChange} className="topic-dropdown">
+    <select
+      value={selectedTopic}
+      onChange={handleChange}
+      className="topic-dropdown"
+    >
       <option value="">All Topics</option>
       {topics.map((topic) => (
         <option key={topic.slug} value={topic.slug}>

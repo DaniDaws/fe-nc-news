@@ -6,6 +6,7 @@ import ArticlePage from "./components/ArticlePage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import UsernameInput from "./components/UsernameInput";
+import TopicPage from "./components/TopicPage";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("grumpy19");
@@ -23,6 +24,7 @@ function App() {
           path="/articles/:articleId"
           element={<ArticlePage currentUser={currentUser} />}
         />
+        <Route path="/topics/:topic" element={<TopicPage />} />
       </Routes>
       <Footer />
     </>
