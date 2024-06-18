@@ -1,0 +1,10 @@
+.username-input {
+    margin: 20px;
+    padding: 10px;
+    font-size: 16px;
+    
+  }
+  
+  .username-input label {
+    margin-right: 10px;
+  }

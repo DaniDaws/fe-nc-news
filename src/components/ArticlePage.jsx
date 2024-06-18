@@ -11,13 +11,12 @@ import CommentCard from "./CommentCard";
 import CommentForm from "./CommentForm";
 import "../components-css/ArticlePage.css";
 
-const ArticlePage = () => {
+const ArticlePage = ({ currentUser }) => {
   const { articleId } = useParams();
   const [article, setArticle] = useState(null);
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
   const [votes, setVotes] = useState(0);
-  const currentUser = "grumpy19";
 
   useEffect(() => {
     getArticleById(articleId)
@@ -95,7 +94,7 @@ const ArticlePage = () => {
             key={comment.comment_id}
             comment={comment}
             currentUser={currentUser}
-            onDelete={handleDeleteComment}
+            handleDeleteComment={handleDeleteComment}
           />
         ))
       ) : (

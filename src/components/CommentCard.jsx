@@ -2,7 +2,7 @@ import React from "react";
 import "../components-css/CommentCard.css";
 import DeleteButton from "./DeleteButton";
 
-const CommentCard = ({ comment, currentUser, onDelete }) => {
+const CommentCard = ({ comment, currentUser, handleDeleteComment }) => {
   return (
     <div className="comment-card">
       <p>{comment.body}</p>
@@ -12,7 +12,10 @@ const CommentCard = ({ comment, currentUser, onDelete }) => {
       </p>
       <p className="comment-votes">Votes: {comment.votes}</p>
       {currentUser === comment.author && (
-        <DeleteButton commentId={comment.comment_id} onDelete={onDelete} />
+        <DeleteButton
+          commentId={comment.comment_id}
+          handleDeleteComment={handleDeleteComment}
+        />
       )}
     </div>
   );

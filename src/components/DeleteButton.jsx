@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "../components-css/DeleteButton.css";
 
-const DeleteButton = ({ commentId, onDelete }) => {
+const DeleteButton = ({ commentId, handleDeleteComment }) => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDelete = () => {
     setIsDeleting(true);
-    onDelete(commentId).catch((error) => {
+    handleDeleteComment(commentId).catch((error) => {
       console.error("Error deleting comment:", error);
       setIsDeleting(false);
     });
