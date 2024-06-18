@@ -13,7 +13,7 @@
   }
   
   .header-link:hover .header-content {
-    color: inherit; /* Ensures the color doesn't change on hover */
+    color: inherit; 
   }
   
   .header-content {

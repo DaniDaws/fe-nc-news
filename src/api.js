@@ -25,3 +25,9 @@ export const patchArticleVotes = (articleId, incVotes) => {
 export const getArticles = () => {
   return api.get("/articles").then((response) => response.data.articles);
 };
+
+export const postComment = (articleId, comment) => {
+  return api
+    .post(`/articles/${articleId}/comments`, comment)
+    .then((response) => response.data.comment);
+};
