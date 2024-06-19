@@ -1,0 +1,17 @@
+.delete-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-button:disabled {
+    background-color: #ff9999;
+    cursor: not-allowed;
+  }
+  
+  .error {
+    color: red;
+  }

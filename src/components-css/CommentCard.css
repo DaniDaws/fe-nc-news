@@ -16,3 +16,17 @@
     font-size: 0.9em;
     color: #333;
   }
+
+  .comment-card {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .comment-author,
+  .comment-votes {
+    margin: 5px 0;
+  }
+  
+  
