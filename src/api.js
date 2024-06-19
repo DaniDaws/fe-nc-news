@@ -22,8 +22,12 @@ export const patchArticleVotes = (articleId, incVotes) => {
     .then((response) => response.data.article);
 };
 
-export const getArticles = () => {
-  return api.get("/articles").then((response) => response.data.articles);
+export const getArticles = (topic) => {
+  let url = "/articles";
+  if (topic) {
+    url += `?topic=${topic}`;
+  }
+  return api.get(url).then((response) => response.data.articles);
 };
 
 export const postComment = (articleId, comment) => {
@@ -34,4 +38,8 @@ export const postComment = (articleId, comment) => {
 
 export const deleteComment = (commentId) => {
   return api.delete(`/comments/${commentId}`);
+};
+
+export const getTopics = () => {
+  return api.get("/topics").then((response) => response.data.topics);
 };
