@@ -22,10 +22,10 @@ export const patchArticleVotes = (articleId, incVotes) => {
     .then((response) => response.data.article);
 };
 
-export const getArticles = (topic) => {
-  let url = "/articles";
+export const getArticles = (topic, sortBy = "created_at", order = "desc") => {
+  let url = `/articles?sort_by=${sortBy}&order=${order}`;
   if (topic) {
-    url += `?topic=${topic}`;
+    url += `&topic=${topic}`;
   }
   return api.get(url).then((response) => response.data.articles);
 };
