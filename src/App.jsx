@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import UsernameInput from "./components/UsernameInput";
 import TopicPage from "./components/TopicPage";
+import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("grumpy19");
@@ -25,6 +26,7 @@ function App() {
           element={<ArticlePage currentUser={currentUser} />}
         />
         <Route path="/topics/:topic" element={<TopicPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </>

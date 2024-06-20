@@ -82,7 +82,18 @@ const ArticlePage = ({ currentUser }) => {
       </div>
 
       <h3>Comments</h3>
-      <p className="logged-in-as">logged in as {currentUser}</p>
+      <p className="logged-in-as">
+        {[
+          "tickle122",
+          "grumpy19",
+          "happyamy2016",
+          "cooljmessy",
+          "weegembump",
+          "jessjelly",
+        ].includes(currentUser)
+          ? `Logged in as ${currentUser}`
+          : "Invalid username; please login before commenting..."}
+      </p>
       <CommentForm
         articleId={articleId}
         currentUser={currentUser}
