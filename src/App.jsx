@@ -8,17 +8,20 @@ import Footer from "./components/Footer";
 import UsernameInput from "./components/UsernameInput";
 import TopicPage from "./components/TopicPage";
 import NotFoundPage from "./components/NotFoundPage";
+import { ThemeProvider } from "./components/ThemeContext";
+import ThemeToggle from "./components/ThemeToggle";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("grumpy19");
 
   return (
-    <>
+    <ThemeProvider>
       <UsernameInput
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
       />
       <Header />
+      <ThemeToggle />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
@@ -29,7 +32,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
-    </>
+    </ThemeProvider>
   );
 }
 

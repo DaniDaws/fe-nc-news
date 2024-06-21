@@ -1,6 +1,6 @@
 .article-page {
   padding: 20px;
-  background-color: #fff;
+  background-color: var(--comment-card-background-light);
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -9,15 +9,19 @@
   margin: auto;
 }
 
+[data-theme="dark"] .article-page {
+  background-color: var(--comment-card-background-dark);
+}
+
 .article-page h2 {
   margin-top: 0;
   font-size: 2em;
-  color: #333;
+  color: inherit;
 }
 
 .article-page p {
   margin: 10px 0;
-  color: #666;
+  color: inherit;
 }
 
 .article-page img {
